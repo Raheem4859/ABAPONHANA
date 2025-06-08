@@ -1,0 +1,23 @@
+@Metadata.allowExtensions: true
+@EndUserText.label: 'Youtube management Core Data Service Entity'
+@AccessControl.authorizationCheck: #CHECK
+@ObjectModel.sapObjectNodeType.name: 'ZVIDEOS'
+define root view entity ZC_VIDEOS
+  provider contract transactional_query
+  as projection on ZR_VIDEOS
+{
+  key VideoId,
+  @ObjectModel.virtualElementCalculatedBy: 'ABAP:ZCL_VIDEOS_ELEMT'
+  @EndUserText.label: 'Thumbnail'
+  @Semantics.imageUrl: true
+  virtual ThumbnailUrl: abap.char(256),
+  Title,
+  Url,
+  Description,
+  LocalCreatedBy,
+  LocalCreatedAt,
+  LocalLastChangedBy,
+  LocalLastChangedAt,
+  LastChangedAt
+  
+}
